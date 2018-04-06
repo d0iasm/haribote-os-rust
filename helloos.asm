@@ -1,6 +1,7 @@
 ; helloos.asm
 
-  ORG 0x7c00
+  ORG 0x7c00 ; The place of a memory to read at first
+; For FAT12 format
   JMP entry
   DB 0x90
 
@@ -23,7 +24,7 @@
   DB "FAT12   "
   RESB 18
 
-  ; main program
+; Main program
 entry:
   MOV AX, 0
   MOV SS, AX
@@ -60,3 +61,4 @@ msg:
   RESB 4600
   DB 0xf0, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00
   RESB 1469432
+
