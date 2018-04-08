@@ -1,7 +1,10 @@
-# commands
+# The makefile of minumum OS
+# Variables
+NAME = helloos
 
+# Commands
 asm:
-	nasm -o helloos.img helloos.asm
+	nasm -o $(NAME).img $(NAME).asm
 
 run:
-	qemu-system-i386 -fda helloos.img
+	qemu-system-i386 -fda $(NAME).img
