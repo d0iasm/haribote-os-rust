@@ -1,6 +1,6 @@
 # The makefile of minumum OS
 # Variables
-NAME = helloos
+NAME = minimumos
 
 # Commands
 asm:
