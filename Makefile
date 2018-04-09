@@ -1,7 +1,7 @@
 # The makefile of minumum OS
 
 # Variables
-IPL_NAME = ipl
+IPL_NAME = ipl10
 OS_NAME = minimum
 
 # Commands
@@ -27,4 +27,10 @@ img:
 run:
 	make img
 	qemu-system-i386 -fda $(OS_NAME).img
+
+clean:
+	rm *.bin
+	rm *.lst
+	rm *.img
+	rm *.sys
 
