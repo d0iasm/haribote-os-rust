@@ -36,7 +36,7 @@ entry:
   MOV SS, AX
   MOV SP, 0x7c00
   MOV DS, AX
-  MOV ES, AX
+  ; MOV ES, AX
   ; MOV SI, msg
 
   ; Load disk
@@ -89,6 +89,9 @@ next:
   ADD CH, 1
   CMP CH, CYLS
   JB readloop ; Move readloop if CH < CYLS
+  
+  MOV [0x0ff0], CH
+  JMP 0xc200
 
 error:
   MOV SI, msg
