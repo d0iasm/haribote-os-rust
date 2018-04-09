@@ -3,13 +3,17 @@ A minimum OS written by Rust
 
 
 ## Commands
-
-The command to work an image file
+Check an img file
 ```
-$ qemu-system-i386 -fda helloos.img
+$ ghex minimum.img
 ```
 
 The command to assemble
 ```
-$ nasm -o helloos.img helloos.asm
+$ make img
+```
+
+The command to work an image file
+```
+$ make run
 ```
