@@ -1,22 +1,22 @@
 # The makefile of minumum OS
 
 # Variables
-IPL_NAME = ipl10
-OS_NAME = minimum
+IPL = ipl10
+HEADER = minimum
 
 # Commands
 default:
 	make img
 
-ipl.bin: $(IPL_NAME).asm Makefile
-	nasm $(IPL_NAME).asm -o $(IPL_NAME).bin -l $(IPL_NAME).lst
+ipl.bin: $(IPL).asm Makefile
+	nasm $(IPL).asm -o $(IPL).bin -l $(IPL).lst
 
-minimum.sys: $(OS_NAME).asm Makefile
-	nasm $(OS_NAME).asm -o $(OS_NAME).sys -l $(OS_NAME).lst
+minimum.sys: $(HEADER).asm Makefile
+	nasm $(HEADER).asm -o $(HEADER).sys -l $(HEADER).lst
 
-minimum.img: $(IPL_NAME).bin $(OS_NAME).sys Makefile
-	mformat -f 1440 -C -B $(IPL_NAME).bin -i $(OS_NAME).img ::
-	mcopy $(OS_NAME).sys -i $(OS_NAME).img ::
+minimum.img: $(IPL).bin $(HEADER).sys Makefile
+	mformat -f 1440 -C -B $(IPL).bin -i $(HEADER).img ::
+	mcopy $(HEADER).sys -i $(HEADER).img ::
 
 asm:
 	make -r ipl.bin
@@ -27,11 +27,12 @@ img:
 run:
 	make asm
 	make img
-	qemu-system-i386 -fda $(OS_NAME).img
+	qemu-system-i386 -fda $(HEADER).img
 
 clean:
 	rm *.bin
 	rm *.lst
 	rm *.img
+	rm *.o
 	rm *.sys
 
